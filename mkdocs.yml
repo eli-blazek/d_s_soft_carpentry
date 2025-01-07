@@ -1,0 +1,24 @@
+site_name: Data Steward Software Carpentry
+nav:
+  - Hlavní strana: index.md
+  - Základní setup:
+    - Základy práce s terminálem: zaklady/zaklady_ptace_s_terminalem.md
+    - Textový editor: zaklady/prostredi.md
+    - Instalace Pythonu: zaklady/instalace_pythonu.md
+theme:
+  name: material
+  language: cs
+  palette:
+    scheme: default
+    primary: deep-purple
+  features:
+    - navigation.tabs
+
+copyright: 2025 Eli Blažková
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+
+
