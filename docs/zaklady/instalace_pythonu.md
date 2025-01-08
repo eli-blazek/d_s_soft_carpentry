@@ -22,6 +22,7 @@ Ten je napsaný právě v Pythonu a distribuovaný jako Python program. Proto si
   - Následně otevřete instalační soubor a nainstalujte Python 
   - **Důležité** - Během instalace zaškrtněte "Use admin priviledges" a "Add python.exe to PATH" a pak v posledním kroku klikněte na "Overwrite PATH limit"
   
-  ![install_python_win](../img/install_python_windows.png){ align=left }
+  ![install_python_win](../img/install_python_windows.png)
 
-- Dokončete instalaci. Pokud jste to ještě neudělali, zavřete a znovu otevřete příkazovou řádku (cmd.exe) aby se mohla znovu načíst konfigurace. Tímto je Python nainstalovaný.
+- Dokončete instalaci. Pokud jste to ještě neudělali, zavřete a znovu otevřete příkazovou řádku (cmd.exe) aby se mohla znovu načíst konfigurace. Tímto je Python nainstalovaný
+- Ověřte tím, že do příkazové řádky znovu napíšete `python`
