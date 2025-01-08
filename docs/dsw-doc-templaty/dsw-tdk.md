@@ -13,7 +13,7 @@
 - Jak už jsem uváděla [tady](../zaklady/instalace_pythonu.md) DSW-TDK není distribuovaný jako instalační/executable soubor, jak jste nejspíš zvyklí, ale jako Python balíček
 - Python balíčky jsou Python programy, které si můžete stáhnout a nějak je používat (buď samostatně, jako TDK, nebo jako knihovnu ve vašich vlastních Python programech)
 - Abychom mohli TDK používat, musíme mít na našem počítači [nainstalovaný Python](../zaklady/instalace_pythonu.md)
-- Následně [otevřete terminál](../zaklady/zaklady_ptace_s_terminalem.md) a napište tam tenhle příkaz `pip install dsw-tdk`
+- Pokud máte už Python nainstalovaný, [otevřete terminál](../zaklady/zaklady_ptace_s_terminalem.md) a napište tam tenhle příkaz `pip install dsw-tdk`
 
 ### Co tenhle příkaz dělá? 
 - První část `pip` volá Python Package Index. To je další CLI nástroj, který se nainstaloval jako součást Pythonu, který slouží ke stahování Python programů z oficiálního Pythoního repozitáře [PyPi](https://pypi.org)
@@ -27,11 +27,15 @@
 - Ověřte, že se tdk nainstalovalo tím, že do terminálu napíšete `dsw-tdk --help`
 
 ## Nastavení prostředí, ověření
-- Teď když máme DSW-TDK nainstalové, je potřeba naší DSW instanci nějak říct, že chceme komunikovat přímo s ní a že jsme oprávněný uživatel, který to může
-- DSW na tohle používá autentizaci pomocí tokenu
-- Buď můžete při každém úkonu, který vyžaduje ověření ručně kopírovat adresu DSW serveru a token, nebo můžete využít pohodlné vychytávky, kterou tdk nabízí - [enviromentální proměnné](https://en.wikipedia.org/wiki/Environment_variable)
-- Adresu serveru a autentizační token dostanete od svého admina (v případě FW instance v KNAV tedy ode mě, nebo od Jindřicha)
+- Teď když máme DSW-TDK nainstalové, je potřeba naší DSW instanci nějak říct, že chceme komunikovat přímo s ní a že jsme oprávněný uživatel
+- DSW na tohle používá autentizaci pomocí [tokenu](https://oauth.net/2/access-tokens/)
 
+> Token je dlouhý, náhodný a unikátní textový řetězec, který se bude posílat na DSW server spolu s vašim API requestem (příkazem přes DSW-TDK), který slouží pro ověření oprávněnosti. Slouží místo jména a hesla. 
+
+- Adresu serveru a autentizační token dostanete od svého admina (v případě FW instance v KNAV tedy ode mě, nebo od Jindřicha)
+- Buď můžete při každém úkonu, který vyžaduje ověření ručně kopírovat adresu DSW serveru a token, nebo můžete využít pohodlné vychytávky, kterou tdk nabízí - [enviromentální proměnné](https://en.wikipedia.org/wiki/Environment_variable)
+
+### Generování nového dotenv souboru
 Pomocí terminálu se [odnavigujte do složky](../zaklady/zaklady_ptace_s_terminalem.md), kam si chcete stáhnout daný document template
 > Složka musí být prázdná. Můžete si vytvořit novou pomocí `mkdir`. Pak se do ní přes `cd` odnavigujte.
 
@@ -43,7 +47,7 @@ Dostanete tohle:
  ![tdk-help-message](../img/dsw_tdk_help_message.png)
 
 - Všimněte si hned prvního příkazu (pod "Commands") `dot-env`
-- Co tenhle příkaz dělá? Tenhle příkaz nám vytvoří skrytý soubor ".env", který slouží k tomu, aby se v něm ukládala tajemství. V našem případě tedy adresa serveru, s kterým chceme komunikovat a token
+- Co tenhle příkaz dělá? Tenhle příkaz nám vytvoří skrytý soubor ".env", který slouží k tomu, aby se v něm ukládala tajemství. V našem případě tedy adresa serveru, s kterým chceme komunikovat a autorizační token
 
 > **EXTRÉMNĚ DŮLEŽITÉ**: .env soubor, ani token samotný nikam neposílejte, nenahrávejte, nepřenášejte na jiné zařízení, nemějte na sdíleném počítači, nebo cokoliv jiného. Přistupujte k tomu stejně, jako k loginu a heslu do DSW, nebo do Vaší banky
 > 
@@ -51,6 +55,36 @@ Dostanete tohle:
 
 - Pokud jste ve správné složce, spusťte tedy příkaz pro tvorbu .env souboru - `dsw-tdk dot-env`
 - Po chvilce čekání vás terminál vyzve, abyste zadali adresu pro API cally vaší DSW instance. V terminálu se objeví nápis `API URL:` Nakopírujte tam URL adresu, kterou vám poskytnul váš admin a zmáčkněte Enter
-- Objeví se druhé pole, které chce vyplnit token, poskytnutý od vašeho admina. `API key:` Vyplňte i to a zmáčkněte "Enter"
+- Objeví se druhé pole, které chce vyplnit autorizační token, poskytnutý od vašeho admina. `API key:` Vyplňte i to a zmáčkněte "Enter"
 - Ověřte, že se úspěšně vytvořil soubor .env pomocí příkazu `ls -a`, který vypíše všechny soubory ve složce, včetně skrytých souborů
+- V případě úspěchu by měl terminál vypsat něco takového `.    ..   .env`
+
+- V průzkumníku souborů odnavigujte do složky, kde jste právě soubor vytvořili a otevřete ho (pokud máte nastavenou viditelnost skrytých souborů - Win + H na Windows, Command + Shift + . na MacOS, na Linuxu obvykle Super + H), otevřete ho ve VSCodu
+- Mělo by to vypadat nějak takto: 
+
+ ![vs_code_with_dotenv](../img/dsw_tdk_help_message.png)
+
+- Pokud jste předtím špatně napsali adresu, nebo token, můžete to nyní napravit
+
+### Otestování funkcionality
+Nyní si pojďme zkusit příkazem zavolat nějaká dataz naší DSW instance!
+- Otevřete si integrovaný terminál ve VSCode (CTRL+Shift+P/Cmd+Shift+P a napište `View: Toggle terminal` a zmáčkněte Enter). To otevře novou instanci příkazové řádky ve VSCodu. Funguje úplně stejně jako terminál, s kterým jste dosud pracovali
+- Pomocí `dsw-tdk --help` si vyvolejte seznam základních příkazů
+- Zkuste si nechat vypsat seznam všech dostupných Document templatů pomocí `dsw-tdk list` (bez pomlčky, protože vývojáři kašlou na standardy)
+- Pokud se vám zobrazil seznam Document templatů, máte vše nastaveno správně
+- Pokud ne, zkontrolujte si, že jste ve stejné složce jako váš .env soubor
+- Zkontrolujte si, že máte správně vyplněné API URL a API key
+
+- Tímto je váše vývojové prostředí správně nastavené a jste připraveni pustit se do úprav Document templatů
+
+## DSW-TDK příkazy a jejich vysvětlení
+- dot-env - vytvoří nový .env file
+- get - stáhne Document template, jehož ID se napíše za příkaz do složky, v které se zrovna nacházíte
+- list - vypíše seznam všech Document templatů, dostupných na daném serveru
+- new - vytvoří nový, prázdný Document template
+- package - zazipuje Document template. Musí být voláno z nadřazené složky
+- put - zazipuje a rovnou nahraje document template do DSW. Musí být voláno z nadřazené složky
+- unpackage - rozbalí zip archiv, který obsahuje Document template
+- verify - zkontroluje, zda je Document template v pořádku
+
 
