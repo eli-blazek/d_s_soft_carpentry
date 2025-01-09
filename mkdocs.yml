@@ -7,6 +7,7 @@ nav:
     - Instalace Pythonu: zaklady/instalace_pythonu.md
   - DSW/FW Document templaty - editace:
       - DSW-TDK - instalace a použití: dsw-doc-templaty/dsw-tdk.md
+      - Document template - popis struktury: dsw-doc-templaty/doc_template_struktura.md
 theme:
   name: material
   language: cs

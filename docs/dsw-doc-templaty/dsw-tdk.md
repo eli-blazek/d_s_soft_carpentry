@@ -80,8 +80,8 @@ Dostanete tohle:
 ## DSW-TDK příkazy a jejich vysvětlení
 - dot-env - vytvoří nový .env file
 - get - stáhne Document template, jehož ID se napíše za příkaz do složky, v které se zrovna nacházíte
-- list - vypíše seznam všech Document templatů, dostupných na dané DSW instanci
-- new - vytvoří kostru nového Document templatu
+- list - vypíše id a jméno všech Document templatů, dostupných na dané DSW instanci
+- new - vytvoří kostru nového, prázdného Document templatu
 - package - zazipuje Document template. Musí být voláno z kořenové složky daného templatu (ne ze src)
 - put - zazipuje a rovnou nahraje document template do DSW. Musí být voláno z kořenové složky daného templatu (ne ze src)
 - unpackage - rozbalí zip archiv, který obsahuje Document template
