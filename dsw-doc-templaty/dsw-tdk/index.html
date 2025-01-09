@@ -508,6 +508,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Nastavení prostředí, ověření">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generovani-noveho-dotenv-souboru" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generování nového dotenv souboru
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otestovani-funkcionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Otestování funkcionality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dsw-tdk-prikazy-a-jejich-vysvetleni" class="md-nav__link">
+    <span class="md-ellipsis">
+      DSW-TDK příkazy a jejich vysvětlení
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -583,6 +616,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Nastavení prostředí, ověření">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generovani-noveho-dotenv-souboru" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generování nového dotenv souboru
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otestovani-funkcionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Otestování funkcionality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dsw-tdk-prikazy-a-jejich-vysvetleni" class="md-nav__link">
+    <span class="md-ellipsis">
+      DSW-TDK příkazy a jejich vysvětlení
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -617,7 +683,7 @@
 <li>Jak už jsem uváděla <a href="../../zaklady/instalace_pythonu/">tady</a> DSW-TDK není distribuovaný jako instalační/executable soubor, jak jste nejspíš zvyklí, ale jako Python balíček</li>
 <li>Python balíčky jsou Python programy, které si můžete stáhnout a nějak je používat (buď samostatně, jako TDK, nebo jako knihovnu ve vašich vlastních Python programech)</li>
 <li>Abychom mohli TDK používat, musíme mít na našem počítači <a href="../../zaklady/instalace_pythonu/">nainstalovaný Python</a></li>
-<li>Následně <a href="../../zaklady/zaklady_ptace_s_terminalem/">otevřete terminál</a> a napište tam tenhle příkaz <code>pip install dsw-tdk</code></li>
+<li>Pokud máte už Python nainstalovaný, <a href="../../zaklady/zaklady_ptace_s_terminalem/">otevřete terminál</a> a napište tam tenhle příkaz <code>pip install dsw-tdk</code></li>
 </ul>
 <h3 id="co-tenhle-prikaz-dela">Co tenhle příkaz dělá?</h3>
 <ul>
@@ -635,11 +701,17 @@ Vždycky, když byste potřebovali nějakou knihovnu stáhnout, omezte jí na je
 </ul>
 <h2 id="nastaveni-prostredi-overeni">Nastavení prostředí, ověření</h2>
 <ul>
-<li>Teď když máme DSW-TDK nainstalové, je potřeba naší DSW instanci nějak říct, že chceme komunikovat přímo s ní a že jsme oprávněný uživatel, který to může</li>
-<li>DSW na tohle používá autentizaci pomocí tokenu</li>
-<li>Buď můžete při každém úkonu, který vyžaduje ověření ručně kopírovat adresu DSW serveru a token, nebo můžete využít pohodlné vychytávky, kterou tdk nabízí - <a href="https://en.wikipedia.org/wiki/Environment_variable">enviromentální proměnné</a></li>
-<li>Adresu serveru a autentizační token dostanete od svého admina (v případě FW instance v KNAV tedy ode mě, nebo od Jindřicha)</li>
+<li>Teď když máme DSW-TDK nainstalové, je potřeba naší DSW instanci nějak říct, že chceme komunikovat přímo s ní a že jsme oprávněný uživatel</li>
+<li>DSW na tohle používá autentizaci pomocí <a href="https://oauth.net/2/access-tokens/">tokenu</a></li>
 </ul>
+<blockquote>
+<p>Token je dlouhý, náhodný a unikátní textový řetězec, který se bude posílat na DSW server spolu s vašim API requestem (příkazem přes DSW-TDK), který slouží pro ověření oprávněnosti. Slouží místo jména a hesla. </p>
+</blockquote>
+<ul>
+<li>Adresu serveru a autentizační token dostanete od svého admina (v případě FW instance v KNAV tedy ode mě, nebo od Jindřicha)</li>
+<li>Buď můžete při každém úkonu, který vyžaduje ověření ručně kopírovat adresu DSW serveru a token, nebo můžete využít pohodlné vychytávky, kterou tdk nabízí - <a href="https://en.wikipedia.org/wiki/Environment_variable">enviromentální proměnné</a></li>
+</ul>
+<h3 id="generovani-noveho-dotenv-souboru">Generování nového dotenv souboru</h3>
 <p>Pomocí terminálu se <a href="../../zaklady/zaklady_ptace_s_terminalem/">odnavigujte do složky</a>, kam si chcete stáhnout daný document template</p>
 <blockquote>
 <p>Složka musí být prázdná. Můžete si vytvořit novou pomocí <code>mkdir</code>. Pak se do ní přes <code>cd</code> odnavigujte.</p>
@@ -654,7 +726,7 @@ Vždycky, když byste potřebovali nějakou knihovnu stáhnout, omezte jí na je
  <img alt="tdk-help-message" src="../../img/dsw_tdk_help_message.png" /></p>
 <ul>
 <li>Všimněte si hned prvního příkazu (pod "Commands") <code>dot-env</code></li>
-<li>Co tenhle příkaz dělá? Tenhle příkaz nám vytvoří skrytý soubor ".env", který slouží k tomu, aby se v něm ukládala tajemství. V našem případě tedy adresa serveru, s kterým chceme komunikovat a token</li>
+<li>Co tenhle příkaz dělá? Tenhle příkaz nám vytvoří skrytý soubor ".env", který slouží k tomu, aby se v něm ukládala tajemství. V našem případě tedy adresa serveru, s kterým chceme komunikovat a autorizační token</li>
 </ul>
 <blockquote>
 <p><strong>EXTRÉMNĚ DŮLEŽITÉ</strong>: .env soubor, ani token samotný nikam neposílejte, nenahrávejte, nepřenášejte na jiné zařízení, nemějte na sdíleném počítači, nebo cokoliv jiného. Přistupujte k tomu stejně, jako k loginu a heslu do DSW, nebo do Vaší banky</p>
@@ -663,8 +735,41 @@ Vždycky, když byste potřebovali nějakou knihovnu stáhnout, omezte jí na je
 <ul>
 <li>Pokud jste ve správné složce, spusťte tedy příkaz pro tvorbu .env souboru - <code>dsw-tdk dot-env</code></li>
 <li>Po chvilce čekání vás terminál vyzve, abyste zadali adresu pro API cally vaší DSW instance. V terminálu se objeví nápis <code>API URL:</code> Nakopírujte tam URL adresu, kterou vám poskytnul váš admin a zmáčkněte Enter</li>
-<li>Objeví se druhé pole, které chce vyplnit token, poskytnutý od vašeho admina. <code>API key:</code> Vyplňte i to a zmáčkněte "Enter"</li>
+<li>Objeví se druhé pole, které chce vyplnit autorizační token, poskytnutý od vašeho admina. <code>API key:</code> Vyplňte i to a zmáčkněte "Enter"</li>
 <li>Ověřte, že se úspěšně vytvořil soubor .env pomocí příkazu <code>ls -a</code>, který vypíše všechny soubory ve složce, včetně skrytých souborů</li>
+<li>
+<p>V případě úspěchu by měl terminál vypsat něco takového <code>.    ..   .env</code></p>
+</li>
+<li>
+<p>V průzkumníku souborů odnavigujte do složky, kde jste právě soubor vytvořili a otevřete ho (pokud máte nastavenou viditelnost skrytých souborů - Win + H na Windows, Command + Shift + . na MacOS, na Linuxu obvykle Super + H), otevřete ho ve VSCodu</p>
+</li>
+<li>Mělo by to vypadat nějak takto: </li>
+</ul>
+<p><img alt="vs_code_with_dotenv" src="../../img/dsw_tdk_help_message.png" /></p>
+<ul>
+<li>Pokud jste předtím špatně napsali adresu, nebo token, můžete to nyní napravit</li>
+</ul>
+<h3 id="otestovani-funkcionality">Otestování funkcionality</h3>
+<p>Nyní si pojďme zkusit příkazem zavolat nějaká dataz naší DSW instance!
+- Otevřete si integrovaný terminál ve VSCode (CTRL+Shift+P/Cmd+Shift+P a napište <code>View: Toggle terminal</code> a zmáčkněte Enter). To otevře novou instanci příkazové řádky ve VSCodu. Funguje úplně stejně jako terminál, s kterým jste dosud pracovali
+- Pomocí <code>dsw-tdk --help</code> si vyvolejte seznam základních příkazů
+- Zkuste si nechat vypsat seznam všech dostupných Document templatů pomocí <code>dsw-tdk list</code> (bez pomlčky, protože vývojáři kašlou na standardy)
+- Pokud se vám zobrazil seznam Document templatů, máte vše nastaveno správně
+- Pokud ne, zkontrolujte si, že jste ve stejné složce jako váš .env soubor
+- Zkontrolujte si, že máte správně vyplněné API URL a API key</p>
+<ul>
+<li>Tímto je váše vývojové prostředí správně nastavené a jste připraveni pustit se do úprav Document templatů</li>
+</ul>
+<h2 id="dsw-tdk-prikazy-a-jejich-vysvetleni">DSW-TDK příkazy a jejich vysvětlení</h2>
+<ul>
+<li>dot-env - vytvoří nový .env file</li>
+<li>get - stáhne Document template, jehož ID se napíše za příkaz do složky, v které se zrovna nacházíte</li>
+<li>list - vypíše seznam všech Document templatů, dostupných na dané DSW instanci</li>
+<li>new - vytvoří kostru nového Document templatu</li>
+<li>package - zazipuje Document template. Musí být voláno z kořenové složky daného templatu (ne ze src)</li>
+<li>put - zazipuje a rovnou nahraje document template do DSW. Musí být voláno z kořenové složky daného templatu (ne ze src)</li>
+<li>unpackage - rozbalí zip archiv, který obsahuje Document template</li>
+<li>verify - zkontroluje, zda je Document template v pořádku - vypíše informace z metamodelu, templatem podporované formáty, indexované soubory</li>
 </ul>
 
 
