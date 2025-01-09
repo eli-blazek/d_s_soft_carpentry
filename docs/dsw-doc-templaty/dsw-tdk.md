@@ -67,7 +67,7 @@ Dostanete tohle:
 - Pokud jste předtím špatně napsali adresu, nebo token, můžete to nyní napravit
 
 ### Otestování funkcionality
-Nyní si pojďme zkusit příkazem zavolat nějaká dataz naší DSW instance!
+- Nyní si pojďme zkusit příkazem zavolat nějaká dataz naší DSW instance!
 - Otevřete si integrovaný terminál ve VSCode (CTRL+Shift+P/Cmd+Shift+P a napište `View: Toggle terminal` a zmáčkněte Enter). To otevře novou instanci příkazové řádky ve VSCodu. Funguje úplně stejně jako terminál, s kterým jste dosud pracovali
 - Pomocí `dsw-tdk --help` si vyvolejte seznam základních příkazů
 - Zkuste si nechat vypsat seznam všech dostupných Document templatů pomocí `dsw-tdk list` (bez pomlčky, protože vývojáři kašlou na standardy)
