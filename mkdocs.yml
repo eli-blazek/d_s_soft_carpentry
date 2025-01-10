@@ -16,6 +16,10 @@ theme:
     primary: deep-purple
   features:
     - navigation.tabs
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/eli-blazek/d_s_soft_carpentry
 
 copyright: 2025 Eli Blažková
 
